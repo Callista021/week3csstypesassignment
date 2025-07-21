@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Cake - Callista's Bakery</title>
+    <style>
+        /* Basic CSS Styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+        }
+
+        /* Header */
+        header {
+            background-color: #8B4513;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+        }
+
+        .back-btn {
+            background-color: #654321;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            display: inline-block;
+        }
+
+        .back-btn:hover {
+            background-color: #543210;
+        }
+
+        /* Main Content */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .product-detail {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .product-info h2 {
+            color: #8B4513;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e74c3c;
+            margin: 15px 0;
+        }
+
+        .description {
+            color: #666;
+            line-height: 1.6;
+            margin: 20px 0;
+        }
+
+        .features {
+            margin: 20px 0;
+        }
+
+        .features h3 {
+            color: #8B4513;
+            margin-bottom: 10px;
+        }
+
+        .features ul {
+            color: #666;
+            padding-left: 20px;
+        }
+
+        .features li {
+            margin: 5px 0;
+        }
+
+        .order-section {
+            background-color: #f9f9f9;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .size-options {
+            margin: 15px 0;
+        }
+
+        .size-options label {
+            font-weight: bold;
+            color: #8B4513;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .size-options input {
+            margin-right: 5px;
+        }
+
+        .quantity {
+            margin: 15px 0;
+        }
+
+        .quantity label {
+            font-weight: bold;
+            color: #8B4513;
+        }
+
+        .quantity input {
+            width: 60px;
+            padding: 5px;
+            margin-left: 10px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .order-btn {
+            background-color: #e74c3c;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            margin: 10px 5px;
+        }
+
+        .order-btn:hover {
+            background-color: #c0392b;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .product-detail {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Callista's Bakery</h1>
+        <a href="index.html" class="back-btn">← Back to Main Page</a>
+    </header>
+
+    <div class="container">
+        <div class="product-detail">
+            <div class="product-image">
+                <img src="https://images.pexels.com/photos/291528/pexels-photo-291528.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Chocolate Cake">
+            </div>
+
+            <div class="product-info">
+                <h2>Chocolate Cake</h2>
+                <div class="price"> Rs.300</div>
+                
+                <div class="description">
+                    Rich and moist chocolate cake with layers of chocolate frosting. 
+                    Made with premium cocoa and the finest ingredients for the ultimate chocolate experience.
+                </div>
+
+                <div class="features">
+                    <h3>Features:</h3>
+                    <ul>
+                        <li>Three layers of moist chocolate cake</li>
+                        <li>Rich chocolate buttercream frosting</li>
+                        <li>Made with premium Belgian cocoa</li>
+                        <li>Perfect for celebrations</li>
+                        <li>Serves 8-10 people</li>
+                    </ul>
+                </div>
+
+                <div class="order-section">
+                    <div class="size-options">
+                        <label>Choose Size:</label>
+                        <input type="radio" name="size" value="small" id="small"> 
+                        <label for="small">6 inch - Rs.600</label><br>
+                        <input type="radio" name="size" value="medium" id="medium" checked> 
+                        <label for="medium">8 inch - Rs.1200</label><br>
+                        <input type="radio" name="size" value="large" id="large"> 
+                        <label for="large">10 inch - Rs. 1800</label>
+                    </div>
+
+                    <div class="quantity">
+                        <label for="qty">Quantity:</label>
+                        <input type="number" id="qty" value="1" min="1" max="5">
+                    </div>
+                    
+                    <button class="order-btn" onclick="addToCart()">Add to Cart</button>
+                    <button class="order-btn" onclick="orderNow()">Order Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function addToCart() {
+            var quantity = document.getElementById('qty').value;
+            var size = document.querySelector('input[name="size"]:checked').value;
+            alert('Added ' + quantity + ' ' + size + ' Chocolate Cake(s) to cart!');
+        }
+
+        function orderNow() {
+            var quantity = document.getElementById('qty').value;
+            var size = document.querySelector('input[name="size"]:checked').value;
+            var price = size === 'small' ? 24.99 : size === 'medium' ? 34.99 : 49.99;
+            var total = (price * quantity).toFixed(2);
+            alert('Order total: $' + total + ' for ' + quantity + ' ' + size + ' Chocolate Cake(s)');
+        }
+    </script>
+</body>
+</html>
